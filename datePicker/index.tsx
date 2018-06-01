@@ -11,7 +11,6 @@ interface IState {
 }
 export class DatePicker extends React.PureComponent<any, IState> {
     listRef?: VirtualizedList<DateObject>
-    isScrolling: boolean = false;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -52,11 +51,8 @@ export class DatePicker extends React.PureComponent<any, IState> {
             add(DatesDistanceFromStartDate + 3, 'day'));
         this.setState({ currentDate: newDate });
     }
-
-
     componentDidUpdate() {
-        this.listRef.scrollToIndex({ index: 1, animated: true });
-        console.log(this.state.currentDate);
+        this.listRef.scrollToIndex({ index: 1, animated: false });
     }
 
     render() {
